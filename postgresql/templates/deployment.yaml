@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.labelname }}
+  namespace: "default"
+  labels:
+    app: {{ .Values.deployment.labelname }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.labelname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.labelname }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        env:
+        - name: "POSTGRES_DB"
+          valueFrom:
+            configMapKeyRef:
+              key: "POSTGRES_DB"
+              name: {{ .Values.configmap.name }} 
+        - name: "POSTGRES_USER"
+          valueFrom:
+            configMapKeyRef:
+              key: "POSTGRES_USER"
+              name: {{ .Values.configmap.name }} 
+        - name: "POSTGRES_PASSWORD"
+          valueFrom:
+            configMapKeyRef:
+              key: "POSTGRES_PASSWORD"
+              name: {{ .Values.configmap.name }} 
+        ports:
+          - containerPort: 5432
+            name: {{ .Values.deployment.labelname }}
+        volumeMounts:
+          - name: {{ .Values.deployment.volumename }} 
+            mountPath: {{ .Values.deployment.volumepath }}
+      volumes:
+        - name:  {{ .Values.deployment.volumename }} 
+          persistentVolumeClaim:
+            claimName:  {{ .Values.pvc.name }} 

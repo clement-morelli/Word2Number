@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configmap.name }} 
+  namespace: "default"
+  labels:
+    app: {{ .Values.configmap.labelname }}
+data:
+  POSTGRES_DB: "demo_db"
+  POSTGRES_USER: "mudasir"
+  POSTGRES_PASSWORD: "12345"
