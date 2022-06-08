@@ -39,5 +39,3 @@ Context '127.0.0.1:8080' updated
 
 
 argocd app create word2number --repo https://github.com/clement-morelli/Work2Number.git --path word2number --dest-server https://kubernetes.default.svc --dest-namespace default
-
-
