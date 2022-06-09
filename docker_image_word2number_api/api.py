@@ -62,8 +62,3 @@ def Word2Number(word):
             print("On skip")
     add_call_to_db(word,value)
     return {"result": value}
-
-
-
-
-
