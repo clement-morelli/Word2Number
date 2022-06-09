@@ -72,7 +72,7 @@ First you need to enabled nains on your Kubernetes with :
 - minikube addons enable ingress
 
 Second you need to apply the expose-service.yaml with :
-- argocd app create nginx-ingress --repo https://github.com/clement-morelli/Work2Number.git --path nginx --dest-server https://kubernetes.default.svc --dest-namespace default
+- argocd app create nginx-ingress --repo https://github.com/clement-morelli/Word2Number.git --path nginx --dest-server https://kubernetes.default.svc --dest-namespace default
 - argocd app set nginx-ingress --sync-policy automated
 
 
