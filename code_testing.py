@@ -1,6 +1,6 @@
 import requests
 import json 
-
+import sys
 #this is a program to test the rest api word2number
 
 #you need to install requests on your local computer with : pip install requests
@@ -15,9 +15,7 @@ import json
 ########################Params########################
 listOfTest = [["chsb","38192"],["ready","ok"],["2 Dads & 2 Moms","241419213151319"],["Dad","414"]]
 
-ipaddress = "192.168.59.149"
-
-port = "31021"
+ipaddress = sys.argv[1]
 ######################################################
 
 
@@ -32,7 +30,7 @@ numberOfTest = len(listOfTest)
 for i in listOfTest:
     test = i[0]
     result = i[1]
-    response = requests.get("http://"+ipaddress+":"+port+"/"+test)  
+    response = requests.get("http://"+ipaddress+":/"+test)  
     response = response.text
     resp_json = json.loads(response)
     response = resp_json["result"] if "result" in resp_json else resp_json["status"]
