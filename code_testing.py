@@ -1,4 +1,5 @@
-import requests 
+import requests
+import json 
 
 #this is a program to test the rest api word2number
 
@@ -12,16 +13,15 @@ import requests
 
 
 ########################Params########################
-listOfTest = [["chsb","38192"],["ready","ok"],["2 Dads & 2 Moms","241419213151319"],["Dad","414"],["Dad","41123454"]]
+listOfTest = [["chsb","38192"],["ready","ok"],["2 Dads & 2 Moms","241419213151319"],["Dad","414"]]
 
-ipaddress = "192.168.59.142"
+ipaddress = "192.168.59.149"
 
-port = "32369"
+port = "31021"
 ######################################################
 
 
 ########################Variables#####################
-listfortraitement = ['status','result','{','}',' ',':','\n','"']
 listOfTestFailed = []
 succeded = 0
 numberOfTest = len(listOfTest)
@@ -32,11 +32,10 @@ numberOfTest = len(listOfTest)
 for i in listOfTest:
     test = i[0]
     result = i[1]
-    response = requests.get("http://"+ipaddress+":"+port+"/"+test)
+    response = requests.get("http://"+ipaddress+":"+port+"/"+test)  
     response = response.text
-    print(response)
-    for i in listfortraitement:
-        response = response.replace(i,'')
+    resp_json = json.loads(response)
+    response = resp_json["result"] if "result" in resp_json else resp_json["status"]
     if response == result:
         succeded += 1
     else :

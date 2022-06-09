@@ -36,8 +36,10 @@ service:
 configmap:
   name: postgres-configmap
   labelname: postgres
-  data: tobecontinue
-
+  postgrespassword: 12345
+  postgresdb: demo_db
+  postgresuser: mudasir
+  
 pvc:
   labelname: postgres
   name: postgres-pvc
