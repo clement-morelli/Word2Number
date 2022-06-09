@@ -56,9 +56,9 @@ argocd login "ip:port"
 - argocd account update-password
 
 Now we can create the 2 applications: 
-- argocd app create word2number --repo https://github.com/clement-morelli/Work2Number.git --path word2number --dest-server https://kubernetes.default.svc --dest-namespace default
+- argocd app create word2number --repo https://github.com/clement-morelli/Word2Number.git --path word2number --dest-server https://kubernetes.default.svc --dest-namespace default
 
-- argocd app create postgresql --repo https://github.com/clement-morelli/Work2Number.git --path postgresql --dest-server https://kubernetes.default.svc --dest-namespace default
+- argocd app create postgresql --repo https://github.com/clement-morelli/Word2Number.git --path postgresql --dest-server https://kubernetes.default.svc --dest-namespace default
 
 - To deploy and automated the sync of your apps you can run : 
 argocd app set postgresql --sync-policy automated
