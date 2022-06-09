@@ -49,3 +49,14 @@ argocd app get word2number
 argocd app sync postgresql
 
 argocd app sync word2number
+
+
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
+
+minikube service argocd-server -n argocd --url
+
+
+
+
+
+minikube addons enable ingress
