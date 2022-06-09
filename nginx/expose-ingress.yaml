@@ -12,6 +12,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: word2number-restapi
+                name: sre-challenge-word2number-restapi
                 port:
                   number: 8000
