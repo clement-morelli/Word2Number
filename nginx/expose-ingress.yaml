@@ -8,10 +8,17 @@ spec:
   rules:
     - http:
         paths:
+          - path: /argocd
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80     
           - path: /(.*)
             pathType: Prefix
             backend:
               service:
                 name: sre-challenge-word2number-restapi
                 port:
-                  number: 8000
+                  number: 8000       
