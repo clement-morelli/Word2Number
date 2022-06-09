@@ -39,3 +39,13 @@ Context '127.0.0.1:8080' updated
 
 
 argocd app create word2number --repo https://github.com/clement-morelli/Work2Number.git --path word2number --dest-server https://kubernetes.default.svc --dest-namespace default
+
+argocd app create postgresql --repo https://github.com/clement-morelli/Work2Number.git --path postgresql --dest-server https://kubernetes.default.svc --dest-namespace default
+
+argocd app get postgresql
+
+argocd app get word2number
+
+argocd app sync postgresql
+
+argocd app sync word2number

@@ -11,8 +11,8 @@ image:
   tag: "9.6.2"
 
 imagePullSecrets: []
-nameOverride: "sre7"
-fullnameOverride: "sre7"
+nameOverride: "postgresql"
+fullnameOverride: "sre-challenge-postgresql"
 
 podAnnotations: {}
 
@@ -29,23 +29,23 @@ securityContext: {}
 
 service:
   name: postgres-svc
-  labelname: postgres-label
+  labelname: postgres
   type: NodePort
   port: 5432
 
 configmap:
   name: postgres-configmap
-  labelname: postgres-label
+  labelname: postgres
   data: tobecontinue
 
 pvc:
-  labelname: postgres-label
+  labelname: postgres
   name: postgres-pvc
   access: ReadWriteOnce
   storage: 5Gi
 
 deployment:
-  labelname: postgres-label
+  labelname: postgres
   volumename: postgres-storage
   volumepath: /var/lib/postgresql/db-data
 
