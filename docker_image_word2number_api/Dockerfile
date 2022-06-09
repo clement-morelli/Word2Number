@@ -6,7 +6,6 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements-prod.txt
 
-EXPOSE 80
+EXPOSE 8000
 
-#CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
-CMD ["waitress-serve", "--port=80", "app:api"]
+CMD ["waitress-serve", "--port=8000", "app:api"]

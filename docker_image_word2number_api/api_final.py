@@ -5,9 +5,9 @@ import pytz
 
 def get_db_connection():
     HOST = "postgres"
-    USER = "mudasir"
+    USER = "clement"
     PASSWORD = "12345"
-    DATABASE = "demo_db"
+    DATABASE = "call_db"
     PORT = "5432"
     # Connect to an existing database
     conn = psycopg2.connect("host=%s dbname=%s user=%s password=%s port=%s" % (HOST, DATABASE, USER, PASSWORD, PORT))

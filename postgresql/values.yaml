@@ -37,8 +37,8 @@ configmap:
   name: postgres-configmap
   labelname: postgres
   postgrespassword: 12345
-  postgresdb: demo_db
-  postgresuser: mudasir
+  postgresdb: call_db
+  postgresuser: clement
   
 pvc:
   labelname: postgres

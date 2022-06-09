@@ -49,11 +49,16 @@ argocd app get word2number
 argocd app sync postgresql
 
 argocd app sync word2number
-
+argocd app set postgresql --sync-policy automated
 
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 
 minikube service argocd-server -n argocd --url
+
+azyF400Z2GegdGvVazyF400Z2GegdGvV
+
+
+
 
 
 
